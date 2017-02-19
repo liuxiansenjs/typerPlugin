@@ -1,3 +1,4 @@
+var typerZone = document.getElementById('here');
 function typerPlugin(msg,id) {
     if (!id) {
         var id = document.getElementsByTagName('body')[0];
@@ -10,7 +11,6 @@ function typerPlugin(msg,id) {
         if (arr.length){
             setTimeout(function() {
                 output.push(arr.shift());
-                console.log(output);
                 var text = output.join('');
                 id.innerHTML = text;
                 print();
@@ -18,3 +18,4 @@ function typerPlugin(msg,id) {
         }   
     }())   
 };
+typerPlugin('function    myFirstCode()    {console.  log(  \'Hello  World\')}',typerZone);
