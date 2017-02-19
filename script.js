@@ -18,4 +18,4 @@ function typerPlugin(msg,id) {
         }   
     }())   
 };
-typerPlugin('function    myFirstCode()    {console.log(\'Hello  World\')}',typerZone);
+typerPlugin("function    myFirstCode()    {console.log('Hello  World')}",typerZone);
