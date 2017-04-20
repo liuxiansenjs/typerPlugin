@@ -1,12 +1,142 @@
-<!DOCTYPE html>
-<html lang='en'>
-    <head>
-        <meta charset="UTF-8">
-        <title>Section 2: JavaScript Language Basics</title>
-    </head>
-    
-    <body>
-        <div id='here' style="background-color: #000; color: #EEE; height: 300px; width: 400px;padding: 3px;">typer.js</div>
-        <script src="script.js"></script>
-    </body>
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>我们都爱超神哥</title>
+	<style>
+		.wrap {
+			max-width: 700px;
+			margin: 0 auto;
+			padding: 10px;
+		}
+		
+		.hide {
+			display: none;
+		}
+		
+		body {
+			padding: 0;
+			margin: 0;
+			background-color: #010101;
+			color: #fefefe;
+			width: 100%;
+			box-sizing: border-box;
+		}
+		
+		.img-fluid {
+			border-radius: 5px;
+			width: 100%;
+		}
+		
+		.code {
+			min-height: 60px;
+			margin: 10px 0px 10px 0px;
+			padding: 10px;
+			background-color: #333;
+			border-radius: 5px;
+			box-shadow: -1px -1px 1px #444 inset;
+		}
+		
+		.window {
+			position: fixed;
+			top: 20px;
+			right: 20px;
+			width: 150px;
+			margin-top: 20px;
+			opacity: 0.8;
+		}
+		
+		.window:hover {
+			opacity: 1;
+		}
+
+	</style>
+</head>
+
+<body>
+	<img class="window" src="1082955454.jpg" alt="">
+	<div class="wrap">
+		<code><a href="#toHere" style="color: #fefefe;">到底部</a></code>
+		<div class="code">
+			<code id="dync_para"></code>
+		</div>
+		<img class="img-fluid hide" src="DSC01003.JPG" alt="">
+		<div id="toHere"></div>
+	</div>
+
+	<script>
+		var dync_para = document.querySelector('#dync_para');
+		var imgList = document.querySelectorAll('img');
+		dync_eff('<!doctype html>\n<html>\n  <head>\n    <style>\n    .img-fluid {\n      width: 100%;\n    }\n    </style>\n  </head>\n  <body>\n    <img src="IMG_1153.jpg" alt="">\n  </body>\n</html>\n  made with LOVE by LIUXIANSEN\n  微信: wxliuchaofan', dync_para, imgList[1]);
+
+		function dync_eff(str, ele, show) {
+			var _arr = [];
+			var _print = [];
+			var _text = '';
+			var reg = /[\/ !<>=""''{}%:;\-\.\d\n\w\u2E80-\u9FFF]/g;
+			var arr_str = str.match(reg);
+			try {
+				arr_str.forEach(function(item) {
+					if (/ /.test(item)) {
+						_arr.push('&nbsp;');
+					} else if (/\n/.test(item)) {
+						_arr.push('<br>');
+					} else if (/</.test(item)) {
+						_arr.push('&lt;')
+					} else if (/>/.test(item)) {
+						_arr.push('&gt;')
+					} else {
+						_arr.push(item);
+					}
+				});
+			} catch (e) {
+				console.log('null of array')
+			}
+
+
+			(function _doPrint() {
+				if (_arr.length) {
+					setTimeout(function() {
+						_print.push(_arr.shift());
+						_text = _print.join('');
+						ele.innerHTML = _text;
+						_doPrint();
+					}, 66);
+				} else {
+					try {
+						show.style.display = 'inline-block';
+					} catch (e) {
+						console.log('null of array');
+					}
+				}
+			}());
+
+
+
+			//				function _add () {
+			//					_print.push(_arr.shift());
+			//					_text = _print.join('');
+			//					console.log(_text);
+			//					ele.innerHTML = _text;
+			//					_doPrint();
+			//				}
+
+			function printOnConsole(item) {
+				if (/ /.test(item)) {
+					console.log('space');
+				} else if (/\d/.test(item)) {
+					console.log('number');
+				} else if (/\n/.test(item)) {
+					console.log('return');
+				} else if (/\w/.test(item)) {
+					console.log('word');
+				}
+			}
+
+		}
+
+	</script>
+</body>
+
 </html>
